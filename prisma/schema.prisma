@@ -1,0 +1,95 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(uuid())
+  name          String?
+  email         String   @unique
+  password      String?
+  emailVerified DateTime?
+  image         String?
+  role          String   @default("user")
+  bookmarks     Term[]   @relation("BookmarkedTerms", references: [id])
+  contributions Term[]   @relation("ContributedTerms", references: [id])
+  comments      Comment[]
+  votes         Vote[]
+  editRequests  EditRequest[] @relation("EditRequestsByUser")
+  notifications Notification[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Term {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  description String   // Markdown
+  tags        String[]
+  category    Category @relation(fields: [categoryId], references: [id])
+  categoryId  String
+  createdBy   User?    @relation("ContributedTerms", fields: [createdById], references: [id])
+  createdById String?
+  votes       Vote[]
+  comments    Comment[]
+  editRequests EditRequest[] @relation("EditRequestsForTerm")
+  approved    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Vote {
+  id      String @id @default(uuid())
+  value   Int
+  user    User   @relation(fields: [userId], references: [id])
+  userId  String
+  term    Term   @relation(fields: [termId], references: [id])
+  termId  String
+  createdAt DateTime @default(now())
+  @@unique([userId, termId])
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  content   String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  term      Term     @relation(fields: [termId], references: [id])
+  termId    String
+  createdAt DateTime @default(now())
+}
+
+model Category {
+  id    String @id @default(uuid())
+  name  String
+  slug  String @unique
+  terms Term[]
+}
+
+model EditRequest {
+  id               String   @id @default(uuid())
+  originalTerm     Term     @relation("EditRequestsForTerm", fields: [originalTermId], references: [id])
+  originalTermId   String
+  suggestedChanges String   // JSON or Markdown
+  status           String   @default("pending")
+  reviewer         User?    @relation(fields: [reviewerId], references: [id])
+  reviewerId       String?
+  user             User     @relation("EditRequestsByUser", fields: [userId], references: [id])
+  userId           String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+} 

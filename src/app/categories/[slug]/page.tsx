@@ -1,0 +1,1 @@
+// /categories/[slug] page placeholder 
