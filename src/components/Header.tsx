@@ -1,21 +1,19 @@
 'use client'
 import { useState } from 'react'
-import Link from 'next/link'
 import { Search, ShoppingCart, User, Menu, X, MapPin } from 'lucide-react'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
-  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'Pages', href: '/pages' },
-    { name: 'Shop', href: '/shop' },
-    { name: 'Vendor', href: '/vendor' },
-    { name: 'Elements', href: '/elements' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/contact' }
+    { name: 'Home', href: '#' },
+    { name: 'Pages', href: '#' },
+    { name: 'Shop', href: '#' },
+    { name: 'Vendor', href: '#' },
+    { name: 'Elements', href: '#' },
+    { name: 'Blog', href: '#' },
+    { name: 'Contact', href: '#' }
   ]
 
   return (
@@ -39,16 +37,16 @@ export default function Header() {
               <h1 className="text-2xl font-bold text-purple-600 script-font">Freshly</h1>
             </div>
 
-            {/* Desktop Navigation - scrollable */}
-            <nav className="hidden md:flex overflow-x-auto scrollbar-thin scrollbar-thumb-purple-200 scrollbar-track-transparent max-w-xl space-x-8">
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex space-x-8">
               {navItems.map((item) => (
-                <Link
+                <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-700 whitespace-nowrap hover:text-purple-600 px-3 py-2 text-sm font-medium transition-colors"
+                  className="text-gray-700 hover:text-purple-600 px-3 py-2 text-sm font-medium transition-colors"
                 >
                   {item.name}
-                </Link>
+                </a>
               ))}
             </nav>
 
@@ -100,10 +98,9 @@ export default function Header() {
               {/* Mobile Menu Button */}
               <button
                 className="md:hidden p-2 text-gray-600 hover:text-purple-600"
-                onClick={() => setSidebarOpen(true)}
-                aria-label="Open menu"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
-                <Menu className="h-6 w-6" />
+                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
             </div>
           </div>
@@ -125,36 +122,20 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Sidebar Navigation */}
-        {sidebarOpen && (
-          <div className="fixed inset-0 z-50 flex">
-            {/* Overlay */}
-            <div
-              className="fixed inset-0 bg-black/30 backdrop-blur-sm"
-              onClick={() => setSidebarOpen(false)}
-            />
-            {/* Sidebar */}
-            <aside className="relative w-64 bg-white h-full shadow-lg flex flex-col p-6 animate-slide-in-left">
-              <button
-                className="absolute top-4 right-4 text-gray-600 hover:text-purple-600"
-                onClick={() => setSidebarOpen(false)}
-                aria-label="Close menu"
-              >
-                <X className="h-6 w-6" />
-              </button>
-              <nav className="mt-8 flex flex-col gap-4">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="text-gray-700 hover:text-purple-600 px-3 py-2 text-base font-medium transition-colors rounded"
-                    onClick={() => setSidebarOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </nav>
-            </aside>
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white border-t">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-purple-600 hover:bg-gray-50 rounded-md"
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
           </div>
         )}
       </header>
