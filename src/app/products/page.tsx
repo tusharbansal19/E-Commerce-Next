@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import { Search, Filter, X, ChevronDown, Star, Heart, ShoppingCart, Grid, List, User, Menu } from 'lucide-react';
-import SearchBar from './SearchBar';
+import { Search, Filter, ChevronDown, Heart, ShoppingCart, Grid, List, User, Menu } from 'lucide-react';
+import Link from 'next/link';
 import Filters from './Filters';
 import ProductCard from './ProductCard';
 import { useSelector, useDispatch } from 'react-redux';
@@ -113,15 +113,15 @@ function ProductsHeader({
       style={{ willChange: 'transform' }}
     >
       {/* Logo */}
-      <a href="/" className="text-lg font-bold text-green-600 mr-2">freshly</a>
+      <Link href="/" className="text-lg font-bold text-green-600 mr-2">freshly</Link>
       {/* Navigation */}
       <nav className="hidden md:flex gap-3 text-sm font-medium text-gray-700 mr-2">
-        <a href="/products" className="hover:text-green-600">Products</a>
-        <a href="/categories" className="hover:text-green-600">Categories</a>
-        <a href="/deals" className="hover:text-green-600">Deals</a>
-        <a href="/about" className="hover:text-green-600">About</a>
-        <a href="/wishlist" className="hover:text-green-600">Wishlist</a>
-        <a href="/contact" className="hover:text-green-600">Contact</a>
+        <Link href="/products" className="hover:text-green-600">Products</Link>
+        <Link href="/categories" className="hover:text-green-600">Categories</Link>
+        <Link href="/deals" className="hover:text-green-600">Deals</Link>
+        <Link href="/about" className="hover:text-green-600">About</Link>
+        <Link href="/wishlist" className="hover:text-green-600">Wishlist</Link>
+        <Link href="/contact" className="hover:text-green-600">Contact</Link>
       </nav>
       {/* Hamburger for mobile */}
       <button className="md:hidden p-2 text-gray-500 hover:text-green-600" onClick={() => setMobileNavOpen((v) => !v)} aria-label="Open navigation menu">
@@ -130,12 +130,12 @@ function ProductsHeader({
       {/* Mobile Dropdown Menu (opens from top, covers width, animated) */}
       {mobileNavOpen && (
         <div id="mobile-nav-dropdown" className="absolute left-0 top-full w-full bg-white border-b shadow-lg flex flex-col md:hidden animate-dropdown z-40 origin-top animate-[dropdownOpen_0.2s_ease]">
-          <a href="/products" className="px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-green-600" onClick={() => setMobileNavOpen(false)}>Products</a>
-          <a href="/categories" className="px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-green-600" onClick={() => setMobileNavOpen(false)}>Categories</a>
-          <a href="/deals" className="px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-green-600" onClick={() => setMobileNavOpen(false)}>Deals</a>
-          <a href="/about" className="px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-green-600" onClick={() => setMobileNavOpen(false)}>About</a>
-          <a href="/wishlist" className="px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-green-600" onClick={() => setMobileNavOpen(false)}>Wishlist</a>
-          <a href="/contact" className="px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-green-600" onClick={() => setMobileNavOpen(false)}>Contact</a>
+          <Link href="/products" className="px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-green-600" onClick={() => setMobileNavOpen(false)}>Products</Link>
+          <Link href="/categories" className="px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-green-600" onClick={() => setMobileNavOpen(false)}>Categories</Link>
+          <Link href="/deals" className="px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-green-600" onClick={() => setMobileNavOpen(false)}>Deals</Link>
+          <Link href="/about" className="px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-green-600" onClick={() => setMobileNavOpen(false)}>About</Link>
+          <Link href="/wishlist" className="px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-green-600" onClick={() => setMobileNavOpen(false)}>Wishlist</Link>
+          <Link href="/contact" className="px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-green-600" onClick={() => setMobileNavOpen(false)}>Contact</Link>
           {/* Sort Dropdown (mobile only) */}
           <div className="px-4 py-2">
             <label htmlFor="mobile-sort" className="block text-xs font-semibold text-gray-500 mb-1">Sort By</label>
@@ -160,12 +160,12 @@ function ProductsHeader({
           </button>
           {/* Icons (mobile only, in dropdown) */}
           <div className="flex items-center justify-around mt-4 mb-2">
-            <a href="/wishlist" className="p-2 text-gray-500 hover:text-green-600"><Heart className="w-5 h-5" /></a>
-            <a href="/cart" className="relative p-2 text-gray-500 hover:text-green-600">
+            <Link href="/wishlist" className="p-2 text-gray-500 hover:text-green-600"><Heart className="w-5 h-5" /></Link>
+            <Link href="/cart" className="relative p-2 text-gray-500 hover:text-green-600">
               <ShoppingCart className="w-5 h-5" />
               {cartCount > 0 && <span className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">{cartCount}</span>}
-            </a>
-            <a href="/login" className="p-2 text-gray-500 hover:text-green-600"><User className="w-5 h-5" /></a>
+            </Link>
+            <Link href="/login" className="p-2 text-gray-500 hover:text-green-600"><User className="w-5 h-5" /></Link>
           </div>
         </div>
       )}
@@ -222,12 +222,12 @@ function ProductsHeader({
       )}
       {/* Icons (desktop only) */}
       <div className="hidden md:flex items-center gap-2">
-        <a href="/wishlist" className="p-2 text-gray-500 hover:text-green-600"><Heart className="w-5 h-5" /></a>
-        <a href="/cart" className="relative p-2 text-gray-500 hover:text-green-600">
+        <Link href="/wishlist" className="p-2 text-gray-500 hover:text-green-600"><Heart className="w-5 h-5" /></Link>
+        <Link href="/cart" className="relative p-2 text-gray-500 hover:text-green-600">
           <ShoppingCart className="w-5 h-5" />
           {cartCount > 0 && <span className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">{cartCount}</span>}
-        </a>
-        <a href="/login" className="p-2 text-gray-500 hover:text-green-600"><User className="w-5 h-5" /></a>
+        </Link>
+        <Link href="/login" className="p-2 text-gray-500 hover:text-green-600"><User className="w-5 h-5" /></Link>
       </div>
     </header>
   );
@@ -250,7 +250,7 @@ export default function ProductsPage() {
   const productsPerPage = 20;
 
   const dispatch = useDispatch<AppDispatch>();
-  const { products, categories, brands, loading } = useSelector((state: any) => state.products);
+  const { products, loading } = useSelector((state: { products: { products: Product[]; loading: boolean } }) => state.products);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -260,7 +260,7 @@ export default function ProductsPage() {
 
   // Filter and sort products
   const filteredProducts = useMemo(() => {
-    let filtered = products.filter((product: any) => {
+    const filtered = products.filter((product: Product) => {
       const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         product.brand.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category.name);
@@ -272,7 +272,7 @@ export default function ProductsPage() {
     });
 
     // Sort products
-    filtered.sort((a: any, b: any) => {
+    filtered.sort((a: Product, b: Product) => {
       switch (sortBy) {
         case 'price-low':
           return a.price - b.price;
