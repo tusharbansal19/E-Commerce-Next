@@ -7,26 +7,17 @@ import {
   X,
   ArrowLeft,
   ShoppingBag,
-  Info,
   Truck,
   Tag,
-  CreditCard,
   Star,
-  Shield,
-  Clock,
   Menu,
   User,
   Search,
   MapPin,
   Phone,
-  Heart,
-  ChevronDown,
-  Facebook,
-  Twitter,
-  Instagram,
-  Mail,
   Trash2
 } from 'lucide-react';
+import Image from 'next/image';
 
 interface CartItem {
   id: string;
@@ -251,10 +242,18 @@ const GroceryCartPage = () => {
               Your trusted partner for fresh, quality groceries delivered to your doorstep.
             </p>
             <div className="flex space-x-4">
-              <Facebook className="h-5 w-5 hover:text-green-200 cursor-pointer" />
-              <Twitter className="h-5 w-5 hover:text-green-200 cursor-pointer" />
-              <Instagram className="h-5 w-5 hover:text-green-200 cursor-pointer" />
-              <Mail className="h-5 w-5 hover:text-green-200 cursor-pointer" />
+              <a href="#" className="text-green-200 hover:text-white cursor-pointer">
+                <Image src="/facebook.png" alt="Facebook" width={20} height={20} />
+              </a>
+              <a href="#" className="text-green-200 hover:text-white cursor-pointer">
+                <Image src="/twitter.png" alt="Twitter" width={20} height={20} />
+              </a>
+              <a href="#" className="text-green-200 hover:text-white cursor-pointer">
+                <Image src="/instagram.png" alt="Instagram" width={20} height={20} />
+              </a>
+              <a href="#" className="text-green-200 hover:text-white cursor-pointer">
+                <Image src="/email.png" alt="Email" width={20} height={20} />
+              </a>
             </div>
           </div>
 
@@ -285,15 +284,15 @@ const GroceryCartPage = () => {
             <h4 className="font-semibold mb-4">Contact Info</h4>
             <div className="space-y-2 text-sm text-green-100">
               <div className="flex items-center">
-                <Phone className="h-4 w-4 mr-2" />
+                <Image src="/phone.png" alt="Phone" width={16} height={16} className="mr-2" />
                 <span>(555) 123-4567</span>
               </div>
               <div className="flex items-center">
-                <Mail className="h-4 w-4 mr-2" />
+                <Image src="/email.png" alt="Email" width={16} height={16} className="mr-2" />
                 <span>support@freshly.com</span>
               </div>
               <div className="flex items-center">
-                <MapPin className="h-4 w-4 mr-2" />
+                <Image src="/location.png" alt="Location" width={16} height={16} className="mr-2" />
                 <span>123 Fresh Street, City</span>
               </div>
             </div>
@@ -361,10 +360,12 @@ const GroceryCartPage = () => {
                       {/* Mobile Layout */}
                       <div className="flex items-start space-x-3 md:hidden"> {/* Reduced space-x to space-x-3 */}
                         <div className="relative flex-shrink-0">
-                          <img
+                          <Image
                             src={item.image}
                             alt={item.name}
                             className="w-14 h-14 rounded-lg object-cover" // Reduced image size to w-14 h-14
+                            width={56}
+                            height={56}
                           />
                           {item.discount && (
                             <div className="absolute -top-1 -right-1 bg-red-500 text-white text-xs px-1 py-0.5 rounded-full font-bold"> {/* Adjusted padding and position */}
@@ -425,10 +426,12 @@ const GroceryCartPage = () => {
                       {/* Desktop Layout */}
                       <div className="hidden md:flex md:items-center md:space-x-6">
                         <div className="relative flex-shrink-0">
-                          <img
+                          <Image
                             src={item.image}
                             alt={item.name}
                             className="w-20 h-20 rounded-lg object-cover"
+                            width={80}
+                            height={80}
                           />
                           {item.discount && (
                             <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-bold">
