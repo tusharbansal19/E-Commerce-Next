@@ -243,7 +243,6 @@ export default function ProductsPage() {
   const [inStockOnly, setInStockOnly] = useState(false);
   const [sortBy, setSortBy] = useState('popularity');
   const [currentPage, setCurrentPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
@@ -367,7 +366,7 @@ export default function ProductsPage() {
                     ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
                     : 'grid-cols-1'
                 }`}>
-                  {paginatedProducts.map((product: any) => (
+                  {paginatedProducts.map((product: Product) => (
                     <ProductCard key={product.id} product={product} />
                   ))}
                 </div>

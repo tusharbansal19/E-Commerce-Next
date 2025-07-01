@@ -1,5 +1,5 @@
 // components/CategorySection.js
-import { Apple, Coffee, Candy, Wine, Fish, Bone } from 'lucide-react'
+import { Apple, Coffee, Candy, Fish, Bone } from 'lucide-react'
 
 export default function CategorySection() {
   const categories = [

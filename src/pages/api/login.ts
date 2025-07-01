@@ -23,7 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
     // Optionally, return user info (not password)
     return res.status(200).json({ message: 'Login successful', user: { id: user.id, name: user.name, email: user.email, role: user.role } });
-  } catch (error) {
+  } catch {
     return res.status(500).json({ message: 'Internal server error' });
   }
 } 

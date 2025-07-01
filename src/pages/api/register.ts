@@ -27,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       },
     });
     return res.status(201).json({ message: 'Registration successful', user: { id: user.id, name: user.name, email: user.email, role: user.role } });
-  } catch (error) {
+  } catch {
     return res.status(500).json({ message: 'Internal server error' });
   }
 } 

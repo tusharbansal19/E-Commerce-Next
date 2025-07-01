@@ -91,7 +91,7 @@ export default function HeroSection() {
                 className="flex transition-transform duration-500 ease-in-out h-full"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
-                {slides.map((slide, index) => (
+                {slides.map((slide) => (
                   <div
                     key={slide.id}
                     className={`min-w-full h-full bg-gradient-to-r ${slide.bgColor} flex items-center justify-between p-8 text-white`}

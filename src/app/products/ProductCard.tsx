@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Star, Heart } from 'lucide-react';
 import type { Product } from './page';
 
@@ -17,10 +18,12 @@ export default function ProductCard({ product }: { product: Product }) {
         <Heart className={`w-5 h-5 ${wishlisted ? 'fill-red-500 text-red-500' : 'text-gray-300 group-hover:text-purple-500'}`} />
       </button>
       <Link href={`/product/${product.id}`} className="block">
-        <img
+        <Image
           src={product.image}
           alt={product.name}
           className="w-full h-40 object-cover rounded-t-xl"
+          width={320}
+          height={160}
         />
       </Link>
       <div className="flex-1 flex flex-col p-4">

@@ -78,8 +78,8 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <h2 className="text-2xl font-bold text-purple-400 mb-4 script-font">Freshly</h2>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Your trusted online grocery store providing fresh, quality products delivered right to your doorstep. 
-              We're committed to making your shopping experience convenient and enjoyable.
+              Your trusted online grocery store providing fresh, quality products delivered right to your doorstep. <br />
+              We&#39;re committed to making your shopping experience convenient and enjoyable.
             </p>
             
             {/* Contact Info */}

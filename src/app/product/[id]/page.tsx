@@ -4,8 +4,6 @@ import {
   ShoppingCart,
   Plus,
   Minus,
-  X,
-  ArrowLeft,
   ShoppingBag,
   Info,
   Truck,
@@ -27,6 +25,7 @@ import {
   Mail,
   Trash2
 } from 'lucide-react';
+import Image from 'next/image';
 
 interface CartItem {
   id: string;
@@ -316,10 +315,12 @@ const ProductDetailPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white p-6 rounded-lg shadow-sm border">
           {/* Product Image */}
           <div className="flex justify-center items-center p-4">
-            <img
+            <Image
               src={productData.image}
               alt={productData.name}
               className="max-w-full h-auto rounded-lg shadow-md object-cover max-h-[400px]"
+              width={320}
+              height={400}
             />
           </div>
 
@@ -534,7 +535,7 @@ const ProductDetailPage = () => {
                         </div>
                       </div>
                       <p className="text-gray-800 font-semibold mb-1">A fantastic lemon!</p>
-                      <p className="text-gray-600 text-sm">"These lemons are incredibly fresh and juicy. Perfect for my morning detox water!"</p>
+                      <p className="text-gray-600 text-sm">&quot;These lemons are incredibly fresh and juicy. Perfect for my morning detox water!&quot;</p>
                       <p className="text-xs text-gray-500 mt-2">By Jane Doe on May 20, 2024</p>
                     </div>
                     <div className="border-b pb-4">
@@ -549,7 +550,7 @@ const ProductDetailPage = () => {
                         </div>
                       </div>
                       <p className="text-gray-800 font-semibold mb-1">High quality and great flavor.</p>
-                      <p className="text-gray-600 text-sm">"I'm very impressed with the quality of these organic lemons. They add so much flavor to my dishes."</p>
+                      <p className="text-gray-600 text-sm">&quot;I'm very impressed with the quality of these organic lemons. They add so much flavor to my dishes.&quot;</p>
                       <p className="text-xs text-gray-500 mt-2">By John Smith on April 15, 2024</p>
                     </div>
                     {/* Add a button to write a review */}
@@ -570,10 +571,12 @@ const ProductDetailPage = () => {
             {relatedProducts.map(product => (
               <div key={product.id} className="bg-white rounded-lg shadow-sm border p-4 text-center group">
                 <div className="relative mb-4 flex justify-center h-40">
-                  <img
+                  <Image
                     src={product.image}
                     alt={product.name}
                     className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                    width={160}
+                    height={160}
                   />
                   {product.originalPrice && (
                     <div className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-bold">
