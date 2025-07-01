@@ -12,6 +12,7 @@ interface FiltersProps {
   setMinRating: (v: number) => void;
   inStockOnly: boolean;
   setInStockOnly: (v: boolean) => void;
+  onClose?: () => void;
 }
 
 export default function Filters({
@@ -25,6 +26,7 @@ export default function Filters({
   setMinRating,
   inStockOnly,
   setInStockOnly,
+  onClose
 }: FiltersProps) {
   // TODO: Replace with dynamic data from API
   const categories = [
@@ -36,7 +38,11 @@ export default function Filters({
   const brands = ['Brand A', 'Brand B', 'Brand C'];
 
   return (
-    <aside className="bg-white rounded-xl shadow p-6 flex flex-col gap-6 w-full">
+    <aside className="bg-white rounded-xl shadow p-6 flex flex-col gap-6 w-full lg:w-auto lg:rounded-xl lg:shadow lg:p-6 lg:gap-6 lg:border lg:border-gray-100 lg:sticky lg:top-32 lg:left-0 lg:z-10">
+      {/* Mobile Close Button */}
+      {onClose && (
+        <button onClick={onClose} className="block lg:hidden absolute top-4 right-4 text-gray-500 hover:text-purple-600 text-2xl font-bold z-20">×</button>
+      )}
       <div>
         <h3 className="font-bold text-lg text-gray-900 mb-4">Categories</h3>
         <div className="flex flex-wrap gap-2">

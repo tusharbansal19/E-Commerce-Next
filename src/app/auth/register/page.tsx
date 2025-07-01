@@ -3,6 +3,10 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { Eye, EyeOff, Check, X, Loader2, User, Mail, Phone, Lock, Sparkles } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '../../Providers';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../../store/userSlice';
 
 interface FormData {
   fullName: string;
@@ -37,6 +41,9 @@ const SignUpPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showSuccess, setShowSuccess] = useState<boolean>(false);
   const [darkMode, setDarkMode] = useState<boolean>(false);
+  const router = useRouter();
+  const { login } = useAuth();
+  const dispatch = useDispatch();
 
   // Password strength calculation
   const calculatePasswordStrength = (password: string): number => {
@@ -88,7 +95,6 @@ const SignUpPage: React.FC = () => {
     }
     setIsLoading(true);
     try {
-      // Replace with your real API endpoint
       const res = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -103,11 +109,14 @@ const SignUpPage: React.FC = () => {
         const data = await res.json();
         throw new Error(data.message || 'Registration failed.');
       }
+      const data = await res.json();
+      login(data.user); // AuthContext
+      dispatch(setUser(data.user)); // Redux
       setShowSuccess(true);
       setTimeout(() => {
         setShowSuccess(false);
-        // Here you would typically redirect to login or dashboard
-      }, 3000);
+        router.replace('/dashboard');
+      }, 1000);
     } catch (error: any) {
       setErrors(prev => ({ ...prev, general: error.message || 'Registration failed.' }));
     } finally {

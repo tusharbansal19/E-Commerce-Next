@@ -2,6 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import { Eye, EyeOff, Check, X, Loader2, Mail, Lock, Sparkles } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '../../Providers';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../../store/userSlice';
 
 const LoginPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +20,9 @@ const LoginPage: React.FC = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const router = useRouter();
+  const { login } = useAuth();
+  const dispatch = useDispatch();
 
   // Real-time validation
   useEffect(() => {
@@ -36,13 +43,9 @@ const LoginPage: React.FC = () => {
     setErrors(prev => ({ ...prev, [name]: '', general: '' }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>) => {
-    if (e) e.preventDefault();
-    const newErrors = {
-      email: '',
-      password: '',
-      general: '',
-    };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const newErrors = { email: '', password: '', general: '' };
     if (!formData.email.trim()) newErrors.email = 'Email is required';
     if (!formData.password) newErrors.password = 'Password is required';
     if (newErrors.email || newErrors.password) {
@@ -51,7 +54,6 @@ const LoginPage: React.FC = () => {
     }
     setIsLoading(true);
     try {
-      // Replace with your real API endpoint
       const res = await fetch('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -61,11 +63,14 @@ const LoginPage: React.FC = () => {
         const data = await res.json();
         throw new Error(data.message || 'Invalid email or password.');
       }
+      const data = await res.json();
+      login(data.user); // AuthContext
+      dispatch(setUser(data.user)); // Redux
       setShowSuccess(true);
       setTimeout(() => {
         setShowSuccess(false);
-        // Redirect to dashboard or home here
-      }, 3000);
+        router.replace('/dashboard');
+      }, 1000);
     } catch (error: any) {
       setErrors(prev => ({ ...prev, general: error.message || 'Invalid email or password.' }));
     } finally {

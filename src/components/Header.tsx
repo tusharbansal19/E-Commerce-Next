@@ -1,8 +1,11 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { Search, ShoppingCart, User, Menu, X, MapPin, Phone, Heart, ChevronDown } from 'lucide-react'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export default function EnhancedHeader() {
+  const router = useRouter()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [isScrolled, setIsScrolled] = useState(false)
@@ -11,18 +14,30 @@ export default function EnhancedHeader() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
 
   const navItems = [
-    { name: 'Home', href: '#', hasDropdown: false },
-    { name: 'Shop', href: '#', hasDropdown: true },
-    { name: 'Categories', href: '#', hasDropdown: true },
-    { name: 'Deals', href: '#', hasDropdown: false },
-    { name: 'About Us', href: '#', hasDropdown: false },
-    { name: 'Blog', href: '#', hasDropdown: false },
-    { name: 'Contact', href: '#', hasDropdown: false }
+    { name: 'Home', href: '/', hasDropdown: false },
+    { name: 'products', href: '/products', hasDropdown: true },
+    { name: 'Categories', href: '/categories', hasDropdown: true },
+    { name: 'Deals', href: '/deals', hasDropdown: false },
+    { name: 'About Us', href: '/about', hasDropdown: false },
+    { name: 'wishlist', href: '/wishlist', hasDropdown: false },
+    { name: 'Contact', href: '/contact', hasDropdown: false }
   ]
 
-  const dropdownItems: Record<string, string[]> = {
-    'Shop': ['All Products', 'Categories', 'New Arrivals', 'Best Sellers', 'Sale'],
-    'Categories': ['Fruits & Veggies', 'Dairy', 'Snacks', 'Beverages', 'Bakery']
+  const dropdownItems: Record<string, { name: string; href: string }[]> = {
+    'products': [
+      { name: 'All Products', href: '/products' },
+      { name: 'Categories', href: '/products' },
+      { name: 'New Arrivals', href: '/products' },
+      { name: 'Best Sellers', href: '/products' },
+      { name: 'Sale', href: '/products' }
+    ],
+    'Categories': [
+      { name: 'Fruits & Veggies', href: '/categories/fruits-veggies' },
+      { name: 'Dairy', href: '/categories/dairy' },
+      { name: 'Snacks', href: '/categories/snacks' },
+      { name: 'Beverages', href: '/categories/beverages' },
+      { name: 'Bakery', href: '/categories/bakery' }
+    ]
   }
 
   // Handle scroll behavior
@@ -117,14 +132,10 @@ export default function EnhancedHeader() {
                   {/* Dropdown Menu */}
                   {item.hasDropdown && activeDropdown === item.name && (
                     <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-2xl border border-gray-100 py-2 z-50 animate-in slide-in-from-top-2 duration-200">
-                      {(dropdownItems[item.name] || []).map((dropItem: string) => (
-                        <a
-                          key={dropItem}
-                          href="#"
-                          className="block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors duration-200"
-                        >
-                          {dropItem}
-                        </a>
+                      {dropdownItems[item.name]?.map((dropItem) => (
+                        <Link key={dropItem.name} href={dropItem.href} className="block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors duration-200">
+                          {dropItem.name}
+                        </Link>
                       ))}
                     </div>
                   )}
@@ -179,7 +190,7 @@ export default function EnhancedHeader() {
                   <User className="h-5 w-5" />
                 </button>
 
-                <button className="relative p-3 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-xl transition-all duration-300 group">
+                <button onClick={() => router.push('/cart')} className="relative p-3 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded-xl transition-all duration-300 group">
                   <ShoppingCart className="h-5 w-5" />
                   <span className="absolute -top-1 -right-1 bg-gradient-to-r from-orange-400 to-orange-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold shadow-lg group-hover:scale-110 transition-transform">
                     2
@@ -246,14 +257,10 @@ export default function EnhancedHeader() {
             <div className="space-y-2">
               {navItems.map((item, index) => (
                 <div key={item.name}>
-                  <a
-                    href={item.href}
-                    className="flex items-center justify-between w-full px-4 py-4 text-base font-medium text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-xl transition-all duration-300 group"
-                    style={{ animationDelay: `${index * 50}ms` }}
-                  >
+                  <Link href={item.href} className="flex items-center justify-between w-full px-4 py-4 text-base font-medium text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-xl transition-all duration-300 group" style={{ animationDelay: `${index * 50}ms` }}>
                     <span>{item.name}</span>
                     {item.hasDropdown && <ChevronDown className="h-4 w-4 text-gray-400 group-hover:text-purple-600" />}
-                  </a>
+                  </Link>
                 </div>
               ))}
             </div>
