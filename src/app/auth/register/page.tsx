@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
-import { Eye, EyeOff, Check, X, Loader2, User, Mail, Phone, Lock, Sparkles } from 'lucide-react';
+import { Eye, EyeOff, Check, X, Loader2, User, Mail, Lock } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '../../Providers';
@@ -40,7 +40,6 @@ const SignUpPage: React.FC = () => {
   const [passwordStrength, setPasswordStrength] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showSuccess, setShowSuccess] = useState<boolean>(false);
-  const [darkMode, setDarkMode] = useState<boolean>(false);
   const router = useRouter();
   const { login } = useAuth();
   const dispatch = useDispatch();
@@ -239,7 +238,6 @@ const SignUpPage: React.FC = () => {
                   {/* Phone */}
                   <div>
                     <div className="relative">
-                      <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" />
                       <input
                         type="tel"
                         name="phone"

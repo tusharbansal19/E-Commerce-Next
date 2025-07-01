@@ -4,26 +4,14 @@ import {
   ShoppingCart,
   Plus,
   Minus,
-  ShoppingBag,
-  Info,
-  Truck,
-  Tag,
-  CreditCard,
   Star,
-  Shield,
-  Clock,
   Menu,
   User,
   Search,
-  MapPin,
-  Phone,
-  Heart,
-  ChevronDown,
   Facebook,
   Twitter,
   Instagram,
-  Mail,
-  Trash2
+  Mail
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -266,15 +254,12 @@ const ProductDetailPage = () => {
             <h4 className="font-semibold mb-4">Contact Info</h4>
             <div className="space-y-2 text-sm text-green-100">
               <div className="flex items-center">
-                <Phone className="h-4 w-4 mr-2" />
                 <span>(555) 123-4567</span>
               </div>
               <div className="flex items-center">
-                <Mail className="h-4 w-4 mr-2" />
                 <span>support@vegicart.com</span>
               </div>
               <div className="flex items-center">
-                <MapPin className="h-4 w-4 mr-2" />
                 <span>123 Fresh Street, City</span>
               </div>
             </div>
@@ -299,11 +284,9 @@ const ProductDetailPage = () => {
           <ol className="list-none p-0 inline-flex">
             <li className="flex items-center">
               <a href="#" className="text-green-600 hover:text-green-800">Home</a>
-              <ChevronDown className="h-3 w-3 text-gray-400 mx-2 rotate-90" />
             </li>
             <li className="flex items-center">
               <a href="#" className="text-green-600 hover:text-green-800">Fresh Organic</a>
-              <ChevronDown className="h-3 w-3 text-gray-400 mx-2 rotate-90" />
             </li>
             <li className="flex items-center">
               <span className="text-gray-700">{productData.name}</span>

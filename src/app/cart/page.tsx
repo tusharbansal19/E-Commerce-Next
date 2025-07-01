@@ -13,8 +13,6 @@ import {
   Menu,
   User,
   Search,
-  MapPin,
-  Phone,
   Trash2
 } from 'lucide-react';
 import Image from 'next/image';
@@ -515,7 +513,7 @@ const GroceryCartPage = () => {
                   {appliedCoupon && (
                     <div className="mt-3 flex items-center text-green-600">
                       <Tag className="h-4 w-4 mr-2" />
-                      <span className="text-sm font-medium">Coupon "{appliedCoupon}" applied successfully!</span>
+                      <span className="text-sm font-medium">Coupon &quot;{appliedCoupon}&quot; applied successfully!</span>
                     </div>
                   )}
                 </div>
