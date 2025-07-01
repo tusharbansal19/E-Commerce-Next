@@ -51,5 +51,9 @@ export const useAuth = () => {
 };
 
 export default function Providers({ children }: { children: React.ReactNode }) {
-  return <Provider store={store}>{children}</Provider>;
+  return (
+    <AuthProvider>
+      <Provider store={store}>{children}</Provider>
+    </AuthProvider>
+  );
 } 
