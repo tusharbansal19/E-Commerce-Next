@@ -41,7 +41,7 @@ export default function TopSellers() {
     }
   ]
 
-  const renderStars = (rating:any) => {
+  const renderStars = (rating: number) => {
     return [...Array(5)].map((_, i) => (
       <Star
         key={i}

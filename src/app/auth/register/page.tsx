@@ -117,8 +117,10 @@ const SignUpPage: React.FC = () => {
         setShowSuccess(false);
         router.replace('/dashboard');
       }, 1000);
-    } catch (error: any) {
-      setErrors(prev => ({ ...prev, general: error.message || 'Registration failed.' }));
+    } catch (error) {
+      let message = 'Registration failed.';
+      if (error instanceof Error) message = error.message;
+      setErrors(prev => ({ ...prev, general: message }));
     } finally {
       setIsLoading(false);
     }

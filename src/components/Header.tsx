@@ -62,9 +62,15 @@ export default function EnhancedHeader() {
 
   // Close mobile menu when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event:any) => {
-      if (isMenuOpen && !event.target.closest('.mobile-menu') && !event.target.closest('.menu-button')) {
-        setIsMenuOpen(false)
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (
+        isMenuOpen &&
+        target &&
+        !target.closest('.mobile-menu') &&
+        !target.closest('.menu-button')
+      ) {
+        setIsMenuOpen(false);
       }
     }
 

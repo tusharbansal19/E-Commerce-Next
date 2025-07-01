@@ -1,4 +1,6 @@
-export default function handler(req:any, res:any) {
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
   res.status(200).json([
     {
       id: '1',
@@ -93,7 +95,7 @@ export default function handler(req:any, res:any) {
       updatedAt: new Date().toISOString(),
     },
     {
-      id: '6',
+      id: '12',
       name: 'Organic Whole Milk',
       description: 'Fresh organic milk from grass-fed cows.',
       image: 'https://tse3.mm.bing.net/th/id/OIP.C2yRvmtMBxguk0l6W6bTTgHaGI?rs=1&pid=ImgDetMain&o=7&rm=3',

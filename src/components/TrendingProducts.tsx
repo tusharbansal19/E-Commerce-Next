@@ -145,7 +145,7 @@ export default function TrendingProducts() {
     ? trendingProducts 
     : trendingProducts.filter(product => product.category === selectedCategory)
 
-  const renderStars = (rating:any) => {
+  const renderStars = (rating: number) => {
     return [...Array(5)].map((_, i) => (
       <Star
         key={i}
