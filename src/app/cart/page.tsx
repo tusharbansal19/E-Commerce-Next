@@ -171,7 +171,8 @@ const GroceryCartPage = () => {
       {/* Top Banner */}
       <div className="bg-green-600 text-white text-center py-2 px-4">
         <p className="text-sm font-medium">
-          Free delivery from £39 (T&C's apply)
+          Free delivery from 
+339 (T&amp;C&#39;s apply)
         </p>
       </div>
 
@@ -315,7 +316,7 @@ const GroceryCartPage = () => {
               <ShoppingBag className="h-16 w-16 text-gray-400" />
             </div>
             <h2 className="text-2xl font-bold text-gray-800 mb-4">Your cart is empty</h2>
-            <p className="text-gray-600 mb-8">Looks like you haven't added any items to your cart yet. Start shopping to fill it up!</p>
+            <p className="text-gray-600 mb-8">Looks like you haven&#39;t added any items to your cart yet. Start shopping to fill it up!</p>
             <button className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
               Start Shopping
             </button>

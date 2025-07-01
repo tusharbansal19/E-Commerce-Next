@@ -153,7 +153,7 @@ const LoginPage: React.FC = () => {
                       className={`text-lg leading-relaxed 
                       transition-all duration-600 ease-out opacity-100 translate-y-0 delay-600`}
                   >
-                      Access your account and continue your journey. We&apos;ve missed you!
+                      Access your account and continue your journey. We&#39;ve missed you!
                   </p>
               </div>
 

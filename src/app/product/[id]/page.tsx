@@ -134,7 +134,8 @@ const ProductDetailPage = () => {
       {/* Top Banner */}
       <div className="bg-green-600 text-white text-center py-2 px-4">
         <p className="text-sm font-medium">
-          Free delivery from £39 (T&C's apply)
+          Free delivery from 
+339 (T&amp;C&#39;s apply)
         </p>
       </div>
 
