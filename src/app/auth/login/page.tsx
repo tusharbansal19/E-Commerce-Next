@@ -257,7 +257,7 @@ const LoginPage: React.FC = () => {
                 {/* Sign Up Link */}
                 <div className="text-center mt-8 transition-all duration-600 ease-out opacity-100 delay-700">
                   <p className={`text-gray-600`}>
-                    Don't have an account?{' '}
+                    Don&#39;t have an account?{' '}
                     <Link
                       href="/auth/register"
                       className="text-green-500 hover:text-green-600 font-bold transition-colors"

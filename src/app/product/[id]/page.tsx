@@ -534,7 +534,7 @@ const ProductDetailPage = () => {
                         </div>
                       </div>
                       <p className="text-gray-800 font-semibold mb-1">High quality and great flavor.</p>
-                      <p className="text-gray-600 text-sm">&quot;I'm very impressed with the quality of these organic lemons. They add so much flavor to my dishes.&quot;</p>
+                      <p className="text-gray-600 text-sm">&quot;I&#39;m very impressed with the quality of these organic lemons. They add so much flavor to my dishes.&quot;</p>
                       <p className="text-xs text-gray-500 mt-2">By John Smith on April 15, 2024</p>
                     </div>
                     {/* Add a button to write a review */}
