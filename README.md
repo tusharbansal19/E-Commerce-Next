@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# E-Commerce Web Application
 
-## Getting Started
+This project is a full-stack e-commerce web application built to simulate a real-world online shopping platform. It focuses on core commerce functionality, clean architecture, and a smooth user experience while maintaining scalability and performance.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application allows users to browse products, search and filter items, manage a shopping cart, and place orders through an intuitive interface. The project was developed to gain hands-on experience with building production-style e-commerce workflows and handling state, UI, and data efficiently.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Features
 
-## Learn More
+### Product Management
+- Product listing with images, prices, and descriptions
+- Category-based product browsing
+- Advanced search and filtering functionality
+- Product detail pages with dynamic data rendering
 
-To learn more about Next.js, take a look at the following resources:
+### Cart and Orders
+- Add and remove items from cart
+- Update product quantities dynamically
+- Real-time cart price calculation
+- Order placement workflow
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### User Experience
+- Responsive design for desktop and mobile devices
+- Clean and modern UI
+- Smooth navigation and page transitions
+- User-friendly error handling and feedback
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Authentication (Optional / If Implemented)
+- User login and registration
+- Secure session handling
+- Protected routes for user-specific actions
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Technology Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Frontend
+- React.js / Next.js
+- JavaScript (ES6+)
+- CSS / Tailwind CSS
+
+### Backend
+- Node.js
+- Express.js
+- RESTful APIs
+
+### Database
+- MongoDB / SQL-based database
+
+### State Management
+- Redux Toolkit or Context API
+
+---
+
+## Architecture Highlights
+
+- Component-based frontend architecture
+- Centralized state management for cart and user data
+- REST-based backend with separation of concerns
+- Scalable structure for future feature expansion
+- Optimized data fetching and rendering
+
+---
+
+## Performance and Optimization
+
+- Optimized rendering for product lists
+- Efficient state updates for cart operations
+- SEO-friendly pages
+- Responsive layout with stable UI behavior
